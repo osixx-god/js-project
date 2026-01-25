@@ -1,14 +1,19 @@
-const accordionHead = document.getElementById('box');
-accordionHead.addEventListener( "click", () => {
+const heads = document.querySelectorAll(".accordion-head");
+heads.forEach(head => {
+    head.addEventListener("click", () =>{
+        const body = head.nextElementSibling;
+        const icon = head.querySelector("img");
+        const isOpen = body.classList.contains("open");
 
-displayValue = getComputedStyle(accordionBody).display
-console.log(displayValue);
-if  (displayValue === "none") {
-accordionBody.style.display = "block"; }
-else {
- accordionBody.style.display = "none"
-}
-})
+        heads.forEach(h => {
+        h.nextElementSibling.classList.remove("open");
+        h.querySelector("img").src = "assets/images/icon-plus.svg";
+        });
 
-const accordionBody = document.getElementById('hidden-box');
+        if (!isOpen) {
+            body.classList.add("open");
+            icon.src = "assets/images/icon-minus.svg";
+        }
+    })
+});
 

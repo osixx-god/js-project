@@ -59,9 +59,13 @@ body  {
 .accordion-body {
     color: hsl(237, 12%, 33%);
     line-height: 1.2rem;
-    display: none;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
 }
 
-.text-container.active .accordion-body {
-  display: block;
+.accordion-body.open {
+    max-height: 300px;
+    opacity: 1;
 }
